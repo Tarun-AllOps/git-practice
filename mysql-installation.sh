@@ -5,13 +5,14 @@
 # echo "first please check if you are in super usermode or not"
 
 UserId=$(id -u);
+echo "User id is ${UserId}"
 
-if [ ${UserId} -ne 0 ]
-then
-    echo "User id is ${UserId}"
-    echo "you are not in super usermode. please do package installation in super usermode"
-    exit 1
-fi  
+# if [ ${UserId} -ne 0 ]
+# then
+#     echo "User id is ${UserId}"
+#     echo "you are not in super usermode. please do package installation in super usermode"
+#     exit 1
+# fi  
 
 # echo "Enter name of the package you would like to install"
 # read package
