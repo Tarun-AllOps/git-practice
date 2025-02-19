@@ -4,7 +4,7 @@
 
 # echo "first please check if you are in super usermode or not"
 
-USERID = $(id -u);
+USERID=$(id -u);
 echo "user id is ${USERID}"
 
 # if [$USERID -ne 0]
