@@ -17,8 +17,8 @@ echo "Enter name of the package you would like to install"
 read package
 
 dnf list installed ${package}
-
-if [$? -eq 0]
+Validation=$(echo $?);
+if Validation -eq 0]
 then
     echo "${package} is already installed"
 else
