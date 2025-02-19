@@ -18,27 +18,28 @@ read package
 
 dnf list installed ${package}
 
-if [$? -ne 0]
-then
-    echo "entered if"
-    # echo "${package} is not installed..do you want to install it ? if yes please type 'y'";
-    # read answer
-    # if [${answer} -ne 'y']
-    # then
-    #     echo "you entered ${answer}. aborting installation of the ${package}"
-    #     exit 1
-    # else 
-    #     echo "Installing the ${package}...."
-    # fi
+echo "$(echo $?)"
 
-    # dnf install ${package} -y
-    # if [$? -eq 0]
-    # then
-    #     echo "${package} installation is success"
-    # else
-    #     echo "Something went wrong, ${package} installation is failed."
-    #     exit 1
-    # fi
-else
-    echo "${package} is already installed"
-fi
+# if [$? -ne 0]
+# then
+#     echo "${package} is not installed..do you want to install it ? if yes please type 'y'";
+#     read answer
+#     if [${answer} -ne 'y']
+#     then
+#         echo "you entered ${answer}. aborting installation of the ${package}"
+#         exit 1
+#     else 
+#         echo "Installing the ${package}...."
+#     fi
+
+#     dnf install ${package} -y
+#     if [$? -eq 0]
+#     then
+#         echo "${package} installation is success"
+#     else
+#         echo "Something went wrong, ${package} installation is failed."
+#         exit 1
+#     fi
+# else
+#     echo "${package} is already installed"
+# fi
