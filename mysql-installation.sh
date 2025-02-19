@@ -2,8 +2,6 @@
 
 echo "Welcome to installation of any package."
 
-echo "first please check if you are in super usermode or not"
-
 UserId=$(id -u);
 
 if [ $UserId -ne 0 ]
@@ -23,7 +21,7 @@ else
     echo "$package is not installed..do you want to install it ? if yes please type 'y'";
     read answer
 
-    if [$answer != "y"]; then
+    if [ $answer != "y" ]; then
         echo "you entered $answer. aborting installation of the $package"
         exit 1
     else 
@@ -32,7 +30,7 @@ else
 
     dnf install $package -y
 
-    if [$? -eq 0]; then
+    if [ $? -eq 0 ]; then
         echo "$package installation is success"
     else
         echo "Something went wrong, $package installation is failed."
