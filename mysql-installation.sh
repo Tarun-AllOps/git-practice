@@ -1,15 +1,17 @@
 #!/bin/bash
 
-echo "Welcome to installation of any package."
+# echo "Welcome to installation of any package."
 
-echo "first please check if you are in super usermode or not"
+# echo "first please check if you are in super usermode or not"
 
 USERID = $(id -u);
-if [$USERID -ne 0]
-then
-    echo "you are not in super usermode. please do package installation in super usermode"
-    exit 1
-fi  
+echo "user id is ${USERID}"
+
+# if [$USERID -ne 0]
+# then
+#     echo "you are not in super usermode. please do package installation in super usermode"
+#     exit 1
+# fi  
 
 # echo "Enter name of the package you would like to install"
 
