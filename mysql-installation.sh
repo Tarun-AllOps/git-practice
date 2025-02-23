@@ -14,9 +14,9 @@ CHECK_USER(){
 
 CHECK_USER
 
-Red = "\e[31m"
-Green = "\e[32m"
-NoColor = "\e[0m"
+Red="\e[31m"
+Green="\e[32m"
+NoColor="\e[0m"
 
 echo "Enter name of the package you would like to install"
 read package
