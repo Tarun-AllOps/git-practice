@@ -11,35 +11,36 @@ CHECK_USER(){
         exit 1
     fi 
 } 
+
 CHECK_USER
 
-PACKAGE_INSTALL(){
-    dnf list installed $1
-
-    if [ $? -eq 0 ]; then
-        echo "$1 is already installed"
-    else
-        echo "$1 is not installed..do you want to install it ? if yes please type 'y'";
-
-        if [ $2 != "y" ]; then
-            echo "you entered $2. aborting installation of the $1"
-            exit 1
-        else 
-            echo "Installing the $1...."
-        fi
-
-        dnf install $1 -y
-
-        if [ $? -eq 0 ]; then
-            echo "$1 installation is success"
-        else
-            echo "Something went wrong, $1 installation is failed."
-            exit 1
-        fi    
-    fi
-}
+Red = "\e[31m"
+Green = "\e[32m"
+NoColor = "\e[0m"
 
 echo "Enter name of the package you would like to install"
 read package
+dnf list installed $package
 
-PACKAGE_INSTALL $package "y"
+if [ $? -eq 0 ]; then
+    echo -e "$package is already $Green installed $NoColor"
+else
+    echo "$package is not $Red installed $NoColor..do you want to install it ? if yes please type $Green 'y' $NoColor";
+    read answer
+
+    if [ $answer != "y" ]; then
+        echo "you entered $Red $answer $NoColor. $Red aborting installation of the $package $NoColor"
+        exit 1
+    else 
+        echo "Installing the $package...."
+    fi
+
+    dnf install $package -y
+
+    if [ $? -eq 0 ]; then
+        echo "$package installation is $Green success $NoColor"
+    else
+        echo "Something went wrong, $package installation is $Red failed $NoColor."
+        exit 1
+    fi    
+fi
