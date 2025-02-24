@@ -25,11 +25,11 @@ dnf list installed $package
 if [ $? -eq 0 ]; then
     echo -e "$package is already $Green installed $NoColor"
 else
-    echo "$package is not $Red installed $NoColor..do you want to install it ? if yes please type $Green 'y' $NoColor";
+    echo -e "$package is not $Red installed $NoColor..do you want to install it ? if yes please type $Green 'y' $NoColor";
     read answer
 
     if [ $answer != "y" ]; then
-        echo "you entered $Red $answer $NoColor. $Red aborting installation of the $package $NoColor"
+        echo -e "you entered $Red $answer $NoColor. $Red aborting installation of the $package $NoColor"
         exit 1
     else 
         echo "Installing the $package...."
@@ -38,9 +38,9 @@ else
     dnf install $package -y
 
     if [ $? -eq 0 ]; then
-        echo "$package installation is $Green success $NoColor"
+        echo -e "$package installation is $Green success $NoColor"
     else
-        echo "Something went wrong, $package installation is $Red failed $NoColor."
+        echo -e "Something went wrong, $package installation is $Red failed $NoColor."
         exit 1
     fi    
 fi
