@@ -13,7 +13,7 @@ logFolder="/var/log/shell-script"
 fileName=$(echo $0 | cut -d "." -f1)
 timeStamp=$(date +%Y-%m-%d-%H-%M-%S)
 logFile="$logFolder/$fileName-$timeStamp.log"
-mkdir $logFolder
+mkdir -p $logFolder
 
 CHECK_USER(){
     if [ $UserId -ne 0 ];then
