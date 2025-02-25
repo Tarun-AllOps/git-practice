@@ -32,7 +32,7 @@ USER_GUIDE(){
 
 CHECK_USER
 
-if [ $# -eq 0];then
+if [ $# -eq 0 ];then
     USER_GUIDE
 fi    
 
