@@ -2,20 +2,26 @@
 
 UserId=$(id -u)
 
+#colors
+r="\e[31m"
+g="\e[32m"
+y="\e[33m"
+n="\e[0m"
+
 CHECK_USER(){
     if [ $UserId -ne 0 ];then
         echo "User id is ${UserId}"
-        echo "you are not in super usermode. please do package installation in super usermode"
+        echo -e "$r you are not in superuser mode. please do package installation in superuser mode $n"
         exit 1
     fi
 }
 
 VALIDATE_INSTALLATER(){
     if [ $1 -ne 0 ]; then
-        echo "Something went wrong...FAILED to install $2"
+        echo -e "Something went wrong...$r FAILED $n to install $2"
         exit 1
     else
-        echo "Installation of $2 is success"
+        echo -e "Installation of $2 is $g success $n"
     fi
 }
 
@@ -24,7 +30,7 @@ CHECK_USER
 dnf list installed git
 
 if [ $? -eq 0 ]; then
-    echo "git is already installed....nothing to do"
+    echo "git is $g already installed$n....nothing to do"
 else
     echo "git is not installed...going to install it"
     dnf install git -y
@@ -34,7 +40,7 @@ fi
 dnf list installed mysql
 
 if [ $? -eq 0 ]; then
-    echo "mysql is already installed....nothing to do"
+    echo "mysql is $g already installed$n....nothing to do"
 else
     echo "mysql is not installed...going to install it"
     dnf install mysql -y
