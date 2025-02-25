@@ -30,7 +30,7 @@ CHECK_USER
 dnf list installed git
 
 if [ $? -eq 0 ]; then
-    echo "git is $g already installed$n....nothing to do"
+    echo -e "git is $g already installed$n....nothing to do"
 else
     echo "git is not installed...going to install it"
     dnf install git -y
@@ -40,7 +40,7 @@ fi
 dnf list installed mysql
 
 if [ $? -eq 0 ]; then
-    echo "mysql is $g already installed$n....nothing to do"
+    echo -e "mysql is $g already installed$n....nothing to do"
 else
     echo "mysql is not installed...going to install it"
     dnf install mysql -y
