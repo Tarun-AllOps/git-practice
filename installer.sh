@@ -25,7 +25,16 @@ VALIDATE_INSTALLATER(){
     fi
 }
 
+USER_GUIDE(){
+    echo -e "$r USAGE::$n sudo sh installer.sh package1 package2.....packageN"
+    exit 1
+}
+
 CHECK_USER
+
+if [ $# -eq 0];then
+    USER_GUIDE
+fi    
 
 for i in $@
 do 
@@ -38,23 +47,3 @@ do
         VALIDATE_INSTALLATER $? "$i"
     fi
 done
-
-# dnf list installed git
-
-# if [ $? -eq 0 ]; then
-#     echo -e "git is $g already installed$n....nothing to do"
-# else
-#     echo "git is not installed...going to install it"
-#     dnf install git -y
-#     VALIDATE_INSTALLATER $? "Git"
-# fi
-
-# dnf list installed mysql
-
-# if [ $? -eq 0 ]; then
-#     echo -e "mysql is $g already installed$n....nothing to do"
-# else
-#     echo "mysql is not installed...going to install it"
-#     dnf install mysql -y
-#     VALIDATE_INSTALLATER $? "Mysql"
-# fi
