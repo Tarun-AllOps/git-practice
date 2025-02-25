@@ -8,6 +8,10 @@ g="\e[32m"
 y="\e[33m"
 n="\e[0m"
 
+#LOGS
+# logFolder="/var/log/shell-script"
+# fileName=$(echo $0)
+
 CHECK_USER(){
     if [ $UserId -ne 0 ];then
         echo "User id is ${UserId}"
@@ -31,7 +35,7 @@ USER_GUIDE(){
 }
 
 CHECK_USER
-
+echo $0
 if [ $# -eq 0 ];then
     USER_GUIDE
 fi    
