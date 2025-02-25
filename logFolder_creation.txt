@@ -1,0 +1,12 @@
+Log folder and file creation to log our logs in a personlized file instead of showing then in the cmd terminal
+--------------------------------------------------------------------------------------------------------------
+#LOGS
+logFolder="/var/log/shell-script"
+fileName=$(echo $0 | cut -d "." -f1)
+timeStamp=$(date +%Y-%m-%d-%H-%M-%S)
+logFile="$logFolder/$fileName-$timeStamp.log"
+
+mkdir -p $logFolder # --> search in chatgpt for p
+
+echo "Tarun" | tee -a $logFile   --> here this echo statement is prints on terminal and also gets appended to logfile;
+dnf list installed $package &>>$LOG_FILE  --> here all the logs only prints into logfile. it won't show anything in the terminal.
