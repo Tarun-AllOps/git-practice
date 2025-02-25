@@ -3,7 +3,7 @@
 UserId=$(id -u)
 
 CHECK_USER(){
-    if [ $UserId -ne 0];then
+    if [ $UserId -ne 0 ];then
         echo "User id is ${UserId}"
         echo "you are not in super usermode. please do package installation in super usermode"
         exit 1
@@ -25,7 +25,6 @@ dnf list installed git
 
 if [ $? -eq 0 ]; then
     echo "git is already installed....nothing to do"
-    exit 1
 else
     echo "git is not installed...going to install it"
     dnf install git -y
@@ -36,7 +35,6 @@ dnf list installed mysql
 
 if [ $? -eq 0 ]; then
     echo "mysql is already installed....nothing to do"
-    exit 1
 else
     echo "mysql is not installed...going to install it"
     dnf install mysql -y
