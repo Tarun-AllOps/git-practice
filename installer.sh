@@ -9,45 +9,55 @@ y="\e[33m"
 n="\e[0m"
 
 #LOGS
-# logFolder="/var/log/shell-script"
-# fileName=$(echo $0)
+logFolder="/var/log/shell-script"
+fileName=$(echo $0 | cut -d "." -f1)
+timeStamp=$(date +%Y-%m-%d-%H-%M-%S)
+logFile="$logFolder/$fileName-$timeStamp.log"
+mkdir $logFolder
 
-CHECK_USER(){
-    if [ $UserId -ne 0 ];then
-        echo "User id is ${UserId}"
-        echo -e "$r you are not in superuser mode. please do package installation in superuser mode $n"
-        exit 1
-    fi
-}
-
-VALIDATE_INSTALLATER(){
-    if [ $1 -ne 0 ]; then
-        echo -e "Something went wrong...$r FAILED $n to install $2"
-        exit 1
-    else
-        echo -e "Installation of $2 is $g success $n"
-    fi
-}
-
-USER_GUIDE(){
-    echo -e "$r USAGE::$n sudo sh installer.sh package1 package2.....packageN"
+if [ $? -eq 0 ];then
+    echo "folder created"
+else
+    echo "folder not created"
     exit 1
-}
+fi
 
-CHECK_USER
-echo $0
-if [ $# -eq 0 ];then
-    USER_GUIDE
-fi    
+# CHECK_USER(){
+#     if [ $UserId -ne 0 ];then
+#         echo "User id is ${UserId}"
+#         echo -e "$r you are not in superuser mode. please do package installation in superuser mode $n"
+#         exit 1
+#     fi
+# }
 
-for i in $@
-do 
-    dnf list installed $i
-    if [ $? -eq 0 ]; then
-        echo -e "$i is $g already installed$n....nothing to do"
-    else
-        echo "$i is not installed...going to install it"
-        dnf install $i -y
-        VALIDATE_INSTALLATER $? "$i"
-    fi
-done
+# VALIDATE_INSTALLATER(){
+#     if [ $1 -ne 0 ]; then
+#         echo -e "Something went wrong...$r FAILED $n to install $2"
+#         exit 1
+#     else
+#         echo -e "Installation of $2 is $g success $n"
+#     fi
+# }
+
+# USER_GUIDE(){
+#     echo -e "$r USAGE::$n sudo sh installer.sh package1 package2.....packageN"
+#     exit 1
+# }
+
+# CHECK_USER
+
+# if [ $# -eq 0 ];then
+#     USER_GUIDE
+# fi    
+
+# for i in $@
+# do 
+#     dnf list installed $i
+#     if [ $? -eq 0 ]; then
+#         echo -e "$i is $g already installed$n....nothing to do"
+#     else
+#         echo "$i is not installed...going to install it"
+#         dnf install $i -y
+#         VALIDATE_INSTALLATER $? "$i"
+#     fi
+# done
