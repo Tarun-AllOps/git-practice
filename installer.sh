@@ -27,22 +27,34 @@ VALIDATE_INSTALLATER(){
 
 CHECK_USER
 
-dnf list installed git
+for i in $@
+do 
+    dnf list installed $i
+    if [ $? -eq 0 ]; then
+        echo -e "$i is $g already installed$n....nothing to do"
+    else
+        echo "$i is not installed...going to install it"
+        dnf install $i -y
+        VALIDATE_INSTALLATER $? "$i"
+    fi
+done
 
-if [ $? -eq 0 ]; then
-    echo -e "git is $g already installed$n....nothing to do"
-else
-    echo "git is not installed...going to install it"
-    dnf install git -y
-    VALIDATE_INSTALLATER $? "Git"
-fi
+# dnf list installed git
 
-dnf list installed mysql
+# if [ $? -eq 0 ]; then
+#     echo -e "git is $g already installed$n....nothing to do"
+# else
+#     echo "git is not installed...going to install it"
+#     dnf install git -y
+#     VALIDATE_INSTALLATER $? "Git"
+# fi
 
-if [ $? -eq 0 ]; then
-    echo -e "mysql is $g already installed$n....nothing to do"
-else
-    echo "mysql is not installed...going to install it"
-    dnf install mysql -y
-    VALIDATE_INSTALLATER $? "Mysql"
-fi
+# dnf list installed mysql
+
+# if [ $? -eq 0 ]; then
+#     echo -e "mysql is $g already installed$n....nothing to do"
+# else
+#     echo "mysql is not installed...going to install it"
+#     dnf install mysql -y
+#     VALIDATE_INSTALLATER $? "Mysql"
+# fi
