@@ -1,0 +1,13 @@
+dnf install <package-name1...package-name2.....n> -y
+dnf remove <package-name1...package-name2.....n> -y
+
+systemctl enable <package-name> 
+systemctl start <package-name> 
+systemctl status <package-name>  -> checks the status of the package.
+
+netstat -lntp  --> to check the port of the package
+ps -ef | grep <package-name>  ---> to check the process id of the package
+
+nslookup <DNS name or private Ip>  ---> it will show if the dns we booked for an ip address is working or not.
+
+telnet <DNS name or private Ip> <port number> --> it check if the backend server(any server) is connected to the database server(any server)

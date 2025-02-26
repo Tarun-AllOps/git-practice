@@ -1,6 +1,4 @@
 id -u -> to check current user id;
-dnf list installed <$package>  -> to check if the package is already installed or not;
-dnf install <package> ->to install the package;
 $? -> to check exit status of previuos command, if it is 0 it is success, from 1 to 255 it is error.
 $@ -> works as variable for all arguments passed
 $# -> works as counter of no.of arguments passed
